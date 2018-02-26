@@ -123,12 +123,12 @@ ORDER BY Revenue DESC;
 */
  
 SELECT CONCAT(flight.departAirport," --> ",flight.arriveAirport) AS Route, 
-ROUND(AVG(reservation.cost)) AS 'Avg Revenue'
+FLOOR(AVG(reservation.cost)) AS 'Avg Revenue'
 FROM flight
 INNER JOIN reservation
 ON flight.ID=reservation.flightID
 GROUP BY Route
-ORDER BY 'Avg Revenue' DESC;
+ORDER BY FLOOR(AVG(reservation.cost))DESC;
 
 /*
 14) List the average miles per flight by airline.
